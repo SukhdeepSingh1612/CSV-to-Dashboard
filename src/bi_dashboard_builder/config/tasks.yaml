@@ -1,0 +1,113 @@
+cleaning_design_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the data cleaning module;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {requirements}
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+  expected_output: >
+    A detailed design for the data cleaner, identifying the classes and functions in the module.
+  agent: data_cleaner
+  output_file: output/{module_name}_design.md
+
+cleaning_code_task:
+  description: >
+    Write a python module that implements the design described by the cleaning_design_task, in order to achieve the requirements.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A python module that implements the data cleaner and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: data_cleaner
+  context:
+    - cleaning_design_task
+  output_file: output/{module_name}
+
+eda_design_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the insight generation module;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {requirements}
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+  expected_output: >
+    A detailed design for the insight generator, identifying the classes and functions in the module.
+  agent: insight_generator
+  output_file: output/{module_name}_design.md
+
+eda_code_task:
+  description: >
+    Write a python module that implements the design described by the eda_design_task, in order to achieve the requirements.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A python module that implements the insight generation logic and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: insight_generator
+  context:
+    - eda_design_task
+  output_file: output/{module_name}
+
+charts_design_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the chart builder module;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {requirements}
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+  expected_output: >
+    A detailed design for the chart builder, identifying the classes and functions in the module.
+  agent: chart_builder
+  output_file: output/{module_name}_design.md
+
+charts_code_task:
+  description: >
+    Write a python module that implements the design described by the charts_design_task, in order to achieve the requirements.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A python module that implements the chart building functionality and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: chart_builder
+  context:
+    - charts_design_task
+  output_file: output/{module_name}
+
+narrative_design_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the narrative writer module;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {requirements}
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+  expected_output: >
+    A detailed design for the narrative generator, identifying the classes and functions in the module.
+  agent: narrative_writer
+  output_file: output/{module_name}_design.md
+
+narrative_code_task:
+  description: >
+    Write a python module that implements the design described by the narrative_design_task, in order to achieve the requirements.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A python module that implements the narrative writing logic and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: narrative_writer
+  context:
+    - narrative_design_task
+  output_file: output/{module_name}
+
+export_task:
+  description: >
+    Write a Streamlit UI in a module app.py that demonstrates the complete dashboard using the modules:
+    data cleaner, insight generator, chart builder, and narrative writer.
+    The dashboard should allow CSV upload and then show insights, charts, and the narrative summary.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A Streamlit app in module app.py that imports and integrates the backend modules.
+    The file should be ready to run as-is from the output/ directory.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+  agent: exporter
+  context:
+    - cleaning_code_task
+    - eda_code_task
+    - charts_code_task
+    - narrative_code_task
+  output_file: output/app.py
