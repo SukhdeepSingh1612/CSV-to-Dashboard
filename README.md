@@ -1,5 +1,5 @@
 
-# 📊 Dashboard Builder Crew
+# 📊 CSV-2-Dashbord: Dashboard Builder Using Crew
 
 This project uses [CrewAI](https://github.com/joaomdmoura/crewAI) to automatically generate a Business Intelligence Dashboard from a CSV dataset.
 
