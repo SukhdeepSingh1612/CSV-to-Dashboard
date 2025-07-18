@@ -66,4 +66,4 @@ The crew is defined in `dashboard_builder/crew.py` and is responsible for:
 
 ---
 
-Created with 💡 using CrewAI.
+Created by Sukhdeep Singh
